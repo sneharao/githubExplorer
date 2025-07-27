@@ -1,6 +1,7 @@
-export interface Contributor {
+import { User } from "./user";
+
+export interface Contributor extends User {
     id: number;
-    login: string;
-    avatar_url: string;
     contributions: number;
+    html_url: string;
 }
