@@ -102,3 +102,10 @@ You can learn more in
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Snaps of the application
+
+<img width="2063" height="1242" alt="Screenshot 2025-07-27 at 17 28 52" src="https://github.com/user-attachments/assets/9fdc970f-7fdb-4fc1-9dd6-431acac7a3f0" />
+<img width="1719" height="917" alt="Screenshot 2025-07-27 at 17 30 23" src="https://github.com/user-attachments/assets/4fe0e952-47f8-49be-986e-d0bd8610b407" />
+
+
+
+
