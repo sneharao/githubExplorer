@@ -1,10 +1,53 @@
-# Getting Started with Create React App
+# GitHub Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GitHub Explorer is a React-based web application designed to help users search, explore, and view detailed information about GitHub repositories. It features infinite scrolling for search results, a dedicated detail page for each repository, and a simulated API rate limit warning system.
+
+## Features
+
+- Repository Search: Search for GitHub repositories by name, description, or full name.
+
+- Infinite Scrolling: Automatically loads more repositories as the user scrolls down, providing a seamless browsing experience.
+
+- Repository Detail Page: Click on any repository card to view comprehensive details, including:
+
+    Primary Language
+
+    Number of Forks and Watchers
+
+    Top 5 Contributors
+
+    List of Open Issues
+
+API Rate Limit Warning: The application includes a mock rate-limiting mechanism to demonstrate how to warn users when they are approaching API call limits.
+
+Responsive Design: Built with Tailwind CSS for a responsive and modern user interface that adapts to various screen sizes.
+
+Modular Architecture: Organized into reusable React components and custom hooks for better maintainability and scalability.
+
+### Technologies Used
+
+- React: A JavaScript library for building user interfaces.
+
+- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+
+- Tailwind CSS: A utility-first CSS framework for rapidly styling applications.
+
+- @tanstack/react-query: For efficient data fetching, caching, and synchronization with the server, including infinite scrolling capabilities.
+
+- react-router-dom: For client-side routing and navigation between the repository list and detail pages.
+
+- Intersection Observer API: Used for implementing infinite scrolling.
 
 ## Available Scripts
 
-In the project directory, you can run:
+Clone project :
+git clone git@github.com:sneharao/githubExplorer.git
+cd github-explorer
+
+### `npm i`
+
+Installs all the required packages to run the application
+
 
 ### `npm start`
 
@@ -29,18 +72,33 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Future Improvements
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Add more sophisticated filtering options (e.g., by language, or sort by stars/forks).
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Implement GitHub OAuth for higher API rate limits.
+
+- Bookmark repositories in localStorage
+
+- Add a "Commit History" tab to the detail page by fetching from the commits API.
+
+- Improve error states with more specific UI feedback.
+
+- Add unit and integration tests.
+
+- Implement debouncing for the search input to reduce API calls while typing.
 
 ## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in
+
+- [Rest API to fetch public repositories](https://docs.github.com/en/rest/repos/repos?apiVersion=2022-11-28&search-overlay-input=api+to+get+list+of+puiblic+repositories#list-public-repositories)
+- [Pagination](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api?apiVersion=2022-11-28&search-overlay-input=search+api&search-overlay-ask-ai=true)
+- [Rest API for repository issues](https://docs.github.com/en/rest/issues/issues?apiVersion=2022-11-28#list-repository-issues)
+- [Search API](https://docs.github.com/en/rest/search/search?apiVersion=2022-11-28&versionId=free-pro-team%40latest&restPage=using-pagination-in-the-rest-api#about-search)
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Snaps of the application
