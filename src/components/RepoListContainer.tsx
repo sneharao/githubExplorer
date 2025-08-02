@@ -7,6 +7,8 @@ import SearchBar from './SearchBar';
 
 function RepoContainer() {
     const [searchQuery, setSearchQuery] = useState('');
+    const [currentSortBy, setCurrentSortBy] = useState<string>(''); // State for sorting
+    const [sortedRepos, setSortedRepos] = useState<Repository[]>([]); // State to hold repositories
 
     // useRef to get a direct reference to the DOM element (the sentinel div)
     const triggerRef = useRef(null);
@@ -33,6 +35,21 @@ function RepoContainer() {
         }
     };
 
+    const onSelectSOrtBy = (sortBy: 'stars' | 'repoName') => {
+        setCurrentSortBy(sortBy);
+        const sortedRepos = [...allRepos].sort((a, b) => {
+            if (sortBy === 'stars') {
+                return b.stars - a.stars; // Sort by stars in descending order
+            }
+            if(sortBy === 'repoName') {
+                return a.name.localeCompare(b.name); // Sort by repository name in ascending order
+            }
+
+            return 0; // No sorting if sortBy is empty
+        });
+        setSortedRepos(sortedRepos); // Update the state with sorted repositories
+    };
+
     // Pass the ref, the callback, and optionally any Intersection Observer options
     useIntersectionObserver(triggerRef, onSentinelIntersect);
 
@@ -53,13 +70,11 @@ function RepoContainer() {
 
                         {/* Sort By Dropdown */}
                         <select
-                            // value={currentSortBy} // Functional part
-                            // onChange={(e) => setCurrentSortBy(e.target.value as 'stars' | 'forks' | '')} // Functional part
                             className="p-2 border border-gray-300 rounded-md bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            value={currentSortBy} onChange={(e) => onSelectSOrtBy(e.target.value as 'stars' | 'repoName')} // Functional part
                         >
                             <option value="stars">Sort by Stars</option>
-                            <option value="forks">Sort by Forks</option>
-                            <option value="">Best Match</option>
+                            <option value="repoName">Sort by Repo Name</option>
                         </select>
                     </div>
                 </div>
@@ -70,6 +85,11 @@ function RepoContainer() {
                     {isLoading && <p className="col-span-full text-center text-gray-600">Loading repositories...</p>}
                     {/* Display error message if there's an error */}
                     {(error || isError) && <p className="col-span-full text-center text-red-500">Error: {error.message}</p>}
+
+                    {/* Map and display sorted repository cards */}
+                    {sortedRepos?.map((repo: Repository) => (
+                        <RepoPreviewCard key={repo.id} repo={repo} /> // Use a unique key like repo.id
+                    ))}
 
                     {/* Map and display repository cards */}
                     {allRepos?.map((repo: Repository) => (
